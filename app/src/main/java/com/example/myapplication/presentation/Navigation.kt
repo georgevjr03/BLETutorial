@@ -7,7 +7,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Navigation(){
+fun Navigation(
+    onBluetoothStateChanged:()->Unit
+){
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination =Screen.StartScreen.route ){
@@ -15,7 +17,9 @@ fun Navigation(){
             StartScreen(navController = navController)
         }
         composable(Screen.TemperatureHumidityScreen.route){
-            TemperatureHumidityScreen()
+            TemperatureHumidityScreen(
+                onBluetoothStateChanged
+            )
         }
     }
 }
